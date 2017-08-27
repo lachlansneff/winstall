@@ -1,6 +1,7 @@
 import progress, subprocess, requests, tempfile
+from multiprocessing import Queue
 
-class App(Installer):
+class App:
     def __init__(self, name, url, cmd_args=''):
         self.name = name
         self.url = url
