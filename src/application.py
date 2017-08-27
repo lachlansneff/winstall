@@ -1,6 +1,6 @@
 import progress, subprocess, requests, tempfile
 
-class App:
+class App(Installer):
     def __init__(self, name, url, cmd_args=''):
         self.name = name
         self.url = url
@@ -19,4 +19,5 @@ class App:
         self.installbar = progress.Progress(msg='Installing \''+self.name+'\'', success='\''+self.name+'\' installed')
         self.installbar.start()
         self.process = subprocess.Popen([self.tempfile.name] + cmd_args, creationflag=subprocess.CREATE_NO_WINDOW)
+        self.process.wait()
         self.installbar.stop()
